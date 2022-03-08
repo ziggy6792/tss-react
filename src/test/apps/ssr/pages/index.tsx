@@ -1,21 +1,8 @@
-import Head from 'next/head';
-import { useMemo, memo } from 'react';
-import { GlobalStyles, useMergedClasses } from 'tss-react';
-import { makeStyles, useStyles, withStyles } from '../shared/makeStyles';
+import { makeStyles, useStyles } from '../shared/makeStyles';
 import { List, styled } from '@mui/material';
-import Button from '@mui/material/Button';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import { createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import { useDarkMode } from 'next-dark-mode';
-import { CacheProvider } from '@emotion/react';
 import type { EmotionCache } from '@emotion/cache';
 import createCache from '@emotion/cache';
-import Typography from '@mui/material/Typography';
-import type { CSSObject } from 'tss-react';
-import InputBase from '@mui/material/InputBase';
-import theme from '../src/components/theme';
 
 let muiCache: EmotionCache | undefined = undefined;
 
@@ -50,10 +37,7 @@ const { App } = (() => {
     );
   }
 
-  const useStyles = makeStyles<
-    void,
-    'child' | 'breadcrumbs2_separator' | 'childRefTest_wrapper2' | 'childRefTest_wrapper1'
-  >({
+  const useStyles = makeStyles<void>({
     name: { App },
   })((theme, _params, classes) => {
     const childRefTest_wrapper2 = {
@@ -67,78 +51,6 @@ const { App } = (() => {
       root: {
         '& > h1:nth-child(2)': {
           color: theme.palette.primary.main,
-        },
-      },
-      ovStyled: {
-        color: 'darkred',
-      },
-      ovInternal: {
-        backgroundColor: 'darkblue',
-      },
-      parent: {
-        border: '1px solid black',
-        padding: 30,
-        [`&:hover .${classes.child}`]: {
-          background: 'red',
-        },
-      },
-      child: {
-        background: 'blue',
-        border: '1px solid black',
-      },
-      breadcrumbs_className: {
-        backgroundColor: 'lightblue',
-        '& .MuiBreadcrumbs-separator': {
-          color: 'red',
-        },
-        '&:hover .MuiBreadcrumbs-separator': {
-          color: 'blue',
-        },
-      },
-
-      breadcrumbs2_root: {
-        backgroundColor: 'lightblue',
-        [`&:hover .${classes.breadcrumbs2_separator}`]: {
-          color: 'blue',
-        },
-      },
-      breadcrumbs2_separator: {
-        color: 'red',
-      },
-
-      button2_className: {
-        backgroundColor: 'red',
-      },
-
-      button2_root: {
-        backgroundColor: 'red',
-      },
-
-      testCx_bgYellow: {
-        backgroundColor: 'yellow',
-      },
-      testCx_bgCyan: {
-        backgroundColor: 'cyan',
-      },
-
-      childRefTest_wrapper: {
-        border: '1px solid black',
-        [`&:hover .${classes.childRefTest_wrapper1}`]: {
-          backgroundColor: 'cyan',
-        },
-      },
-      childRefTest_wrapper1: {
-        ...childRefTest_wrapper2,
-      },
-      childRefTest_wrapper2,
-      childRefTest_textColorPink: {
-        color: 'pink',
-      },
-      mq: {
-        height: 100,
-        backgroundColor: 'lightgreen',
-        '@media (max-width: 960px)': {
-          backgroundColor: 'cyan',
         },
       },
     };
